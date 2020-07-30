@@ -6,6 +6,7 @@ var specialChar= ["!","@","#","$","%","^","&","*"];
 var selCriteria=[];
 var MinPWDlength = 8;
 var MaxPWDlength = 128;
+var UserSelection = "";
 alert(DefaultTxt);
 
 // Event listener
@@ -104,13 +105,13 @@ if (selectrandomNum){
 //---------
 
 // -- generate password based on selection
-var UserSelection = "";
+
   for(var i =0; i < pwlength; i++){
 var GeneratedPWD = Math.floor(Math.random()* selectedValues.length);
 switch (selectedValues[GeneratedPWD]){
   case "lowercase": UserSelection+= randomChar();
   break;
-  case "uppercase": UserSelection+= randomChar().toUpperCase;
+  case "uppercase": UserSelection+= randomChar().toUpperCase();
   break;
   case "specialchar": UserSelection+= randomSpec();
   break;
