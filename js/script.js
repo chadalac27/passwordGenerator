@@ -10,7 +10,7 @@ alert(DefaultTxt);
 
 // Event listener
 var generateBtn = document.querySelector("#generate");
-generateBtn.addEventListener("click"),writePassword
+generateBtn.addEventListener("click",writePassword)
 
 
 
@@ -90,19 +90,22 @@ if (!selectLowerCase && !selectUpperCase && !SelectSpecialChar && !selectrandomN
 var selectedValues = [];
 if (selectLowerCase){
   selectedValues.push("lowercase");
+  
 }
 if(selectUpperCase){
   selectedValues.push("uppercase")
 }
-if (SelectSpecialCharl){
+if (SelectSpecialChar){
   selectedValues.push("specialchar")
 }
 if (selectrandomNum){
   selectedValues.push("randomNumber")
 }
 //---------
-var UserSelection = "";
+
 // -- generate password based on selection
+var UserSelection = "";
+  for(var i =0; i < pwlength; i++){
 var GeneratedPWD = Math.floor(Math.random()* selectedValues.length);
 switch (selectedValues[GeneratedPWD]){
   case "lowercase": UserSelection+= randomChar();
@@ -113,4 +116,7 @@ switch (selectedValues[GeneratedPWD]){
   break;
   case "randomnumber": UserSelection+= randomNumber();
   break;
+  
+}
+return UserSelection
 }}
