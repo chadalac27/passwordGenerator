@@ -6,14 +6,11 @@ var specialChar= ["!","@","#","$","%","^","&","*"];
 var selCriteria=[];
 var MinPWDlength = 8;
 var MaxPWDlength = 128;
-var UserSelection = "";
 alert(DefaultTxt);
 
 // Event listener
 var generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click",writePassword)
-
-
 
 // call password writing function
 
@@ -27,7 +24,7 @@ function writePassword() {
 // return random letter from basechar------
 
 function randomChar(){
-var randomcharacter = baseChar[Math.floor(Math.random()* baseChar.length)+1]
+var randomcharacter = baseChar[Math.floor(Math.random()* baseChar.length)]
 console.log(randomcharacter)
 return randomcharacter;
 // console log to check if script is working
@@ -35,13 +32,13 @@ return randomcharacter;
 }
 
 function randomSpec(){
-  var randomspecial = specialChar[Math.floor(Math.random()* specialChar.length)+1]
+  var randomspecial = specialChar[Math.floor(Math.random()* specialChar.length)]
   console.log(randomspecial)
   return randomspecial;
 }
 // random number gen 0-9
 function randomNum(){
-  var randomNumber = [Math.floor(Math.random()* 9)+1]
+  var randomNumber = [Math.floor(Math.random()* 9)]
   console.log(randomNumber)
   return randomNumber;
 }
@@ -85,13 +82,13 @@ var selectrandomNum= confirm("Would you like to use numbers?");
 // did the user select an option
 if (!selectLowerCase && !selectUpperCase && !SelectSpecialChar && !selectrandomNum){
   alert("please select at least one option and try again!");
+  
 }
 // create array for selected values
 
 var selectedValues = [];
 if (selectLowerCase){
   selectedValues.push("lowercase");
-  
 }
 if(selectUpperCase){
   selectedValues.push("uppercase")
@@ -105,9 +102,13 @@ if (selectrandomNum){
 //---------
 
 // -- generate password based on selection
-
+console.log(pwlength);
+var UserSelection = "";
   for(var i =0; i < pwlength; i++){
-var GeneratedPWD = Math.floor(Math.random()* selectedValues.length);
+    console.log("char generate")
+var GeneratedPWD = Math.floor(Math.random()* selectedValues.length );
+console.log("selectedValues " + selectedValues[GeneratedPWD])
+console.log()
 switch (selectedValues[GeneratedPWD]){
   case "lowercase": UserSelection+= randomChar();
   break;
@@ -115,9 +116,12 @@ switch (selectedValues[GeneratedPWD]){
   break;
   case "specialchar": UserSelection+= randomSpec();
   break;
-  case "randomnumber": UserSelection+= randomNumber();
+  case "randomNumber": UserSelection+= randomNum();
   break;
-  
-}
+  default:
+    console.log("nothing found")
+    break;
+    }
+  }
 return UserSelection
-}}
+}
